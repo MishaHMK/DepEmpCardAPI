@@ -2,24 +2,27 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+
 #nullable disable
 
 namespace DepEmpCardAPI.Models
 {
     public partial class ApplicationContext : DbContext
     {
-        public ApplicationContext()
-        {
-        }
 
         public ApplicationContext(DbContextOptions options)
             : base(options)
         {
         }
 
-        public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<PaymentDetail> PaymentDetails { get; set; }
+
+        public void MarkAsModified(Department item)
+        {
+            Entry(item).State = EntityState.Modified;
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

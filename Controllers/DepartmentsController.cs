@@ -13,7 +13,9 @@ namespace DepEmpCardAPI.Controllers
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
+
         private readonly ApplicationContext _context;
+
 
         public DepartmentsController(ApplicationContext context)
         {
